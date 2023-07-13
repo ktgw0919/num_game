@@ -1,3 +1,7 @@
+/*
+作りかけ．時間があるときに作る．
+*/
+
 #include <iostream>
 #include <random>
 
