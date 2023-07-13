@@ -80,7 +80,8 @@ def game(count_game: int):
       score += A
       count_safe += 1
       A = gen_A(0, A)
-    
+
+  # 下のコメントアウトを解除すればセーフ数，正解数，アウト数を出力可能
   '''
   print(f'{count_game=}')
   print(f'{count_correct=},{count_safe=},{count_out=}')
