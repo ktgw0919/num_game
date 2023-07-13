@@ -1,3 +1,7 @@
+'''
+本番用プログラム
+'''
+
 import random
 
 def gen_A(correct: int, pre_ans: int) -> int:
