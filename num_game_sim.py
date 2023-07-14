@@ -10,6 +10,23 @@ import random
 
 max_num = 20000
 
+def find_optimal_A(n):
+  P = 20000 - n + 1  # Qの候補の個数
+  E = [0] * 20001  # 各Aについての期待値を保存するリスト
+  
+  # 計算量ヤバい.死ぬ．
+  for A in range(n, 20000):
+    for i in range(n, 20000):
+      if i < A:
+        E[A] -= (A - i) * 200 / P
+      else:
+        E[A] += A / P
+
+  # 最大期待値を持つAを求める
+  optimal_A = E.index(max(E))
+
+  return optimal_A
+
 def gen_A(correct: int, pre_ans: int) -> int:
   """
   correct (int): 前の回答の正誤．0:セーフ，1:正解，2:アウト
@@ -21,25 +38,26 @@ def gen_A(correct: int, pre_ans: int) -> int:
     '''
     最初の回答
     '''
-    ans = 1
+    ans = find_optimal_A(1)
 
   elif correct == 0:
     '''
     前の回答がセーフの場合
     '''
-    ans = pre_ans + 1
+    ans = find_optimal_A(pre_ans + 1)
 
   elif correct == 1:
     '''
     前の回答が正解の場合
     '''
-    ans = 1
+    ans = find_optimal_A(1)
 
   elif correct == 2:
     '''
     前の回答がアウトの場合
     '''
     ans = 1
+    find_optimal_A(1)
   
   print(ans, end = ',')
 
