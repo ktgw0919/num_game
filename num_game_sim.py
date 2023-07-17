@@ -16,12 +16,13 @@ def gen_A(correct: int, pre_ans: int) -> int:
   pre_ans (int): 前の回答
   """
   ans = 0
+  first_ans = 15000
   
   if pre_ans == 0: 
     '''
     最初の回答
     '''
-    ans = 1
+    ans = first_ans
 
   elif correct == 0:
     '''
@@ -33,15 +34,15 @@ def gen_A(correct: int, pre_ans: int) -> int:
     '''
     前の回答が正解の場合
     '''
-    ans = 1
+    ans = first_ans
 
   elif correct == 2:
     '''
     前の回答がアウトの場合
     '''
-    ans = 1
+    ans = first_ans
   
-  print(ans, end = ',')
+  # print(ans, end = ',')
 
   return ans
 
@@ -91,7 +92,7 @@ def game(count_game: int):
   return score
 
 sum_score = 0
-num_sim = 100 # ゲームのシミュレーション回数
+num_sim = 1000 # ゲームのシミュレーション回数
 for i in range(num_sim):
   sum_score += game(i)
 ave_score = sum_score / num_sim
