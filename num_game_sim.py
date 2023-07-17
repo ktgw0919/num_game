@@ -130,7 +130,7 @@ def game(count_game: int):
   return score
 
 sum_score = 0
-num_sim = 100 # ゲームのシミュレーション回数
+num_sim = 1 # ゲームのシミュレーション回数
 for i in range(num_sim):
   sum_score += game(i)
 ave_score = sum_score / num_sim
